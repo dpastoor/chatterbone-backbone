@@ -1,9 +1,14 @@
 window.MessageView = Backbone.View.extend({
-  template: _.template('<div> message </div>'),
+  template: _.template("<div> <%= text %> - sent from room: <%= roomname %> </div>"),
   initialize: function(){
     this.model.on('change', this.render, this);
   },
   render: function(){
+    console.log(this.template)
+    console.log('model:')
+  console.log(this.model)
+  console.log('jsonified model:')
+  console.log(this.model.toJSON())
     this.$el.html(this.template(this.model.toJSON()));
     return this;
   },
